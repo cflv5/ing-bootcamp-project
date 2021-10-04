@@ -2,8 +2,8 @@ const amqp = require("amqplib");
 
 setTimeout(() => {
     rabbitMqConnection();
+    console.log("Connected to RabbitMQ");
 }, 30000);
-console.log("Connected to RabbitMQ");
 
 async function rabbitMqConnection() {
     try {
@@ -21,6 +21,7 @@ async function rabbitMqConnection() {
         channel.consume("report-queue", response => {
             const report = JSON.parse(response.content.toString());
             console.log("http://localhost:5000/report/" + report.id);
+            channel.ack(response);
         });
 
     } catch (error) {
