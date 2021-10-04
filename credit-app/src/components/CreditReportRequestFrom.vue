@@ -87,10 +87,7 @@ export default {
       this.form.email = "";
       this.form.phone = "";
       this.form.birthday = "";
-    },
-    updated() {
-      console.log(updated);
-    },
+    }
   },
 };
 </script>

@@ -42,7 +42,6 @@ export default {
           if (!response.data.success) {
             that.resultClass = "danger";
           }
-          console.log(response);
           that.showResult = true;
           that.isSubmitting = false;
           that.responeMessage = response.data.data;
