@@ -1,0 +1,63 @@
+version: '3.1'
+services:
+  registry-server:
+      build: registry-server/
+      ports:
+        - 8091:8091
+  rabbitmq:
+    image: rabbitmq:3.9.7-alpine
+    ports:
+      - 5672:5672
+    environment:
+      - RABBITMQ_DEFAULT_USER=bootcamp
+      - RABBITMQ_DEFAULT_PASS=bootcamp
+  pg:
+    image: postgres:alpine
+    ports:
+      - 5454:5432
+    environment: 
+      - POSTGRES_PASSWORD=bootcamp
+      - POSTGRES_USER=bootcamp
+      - POSTGRES_DB=report_service
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+  citizen-api:
+    build: citizen-api/
+    links:
+      - registry-server:registry-server
+    environment:
+      POPULATION_SERVICE_AUTH_KEY: AUTH
+    ports:
+      - 8080:8080
+    depends_on:
+      - registry-server
+  report-service:
+    build: report-service/
+    links:
+      - pg:pg
+      - rabbitmq:rabbitmq
+      - registry-server:registry-server
+    environment:
+      JDBC_URL: jdbc:postgresql://pg:5432/report_service
+    ports:
+      - 8081:8081
+  contact-service:
+    build: contact-service/
+    links:
+      - rabbitmq:rabbitmq
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - rabbitmq
+  api:
+    build: api/
+    ports:
+      - 8082:8082
+    environment:
+      AUTH_KEY: AUTH
+  credit-app:
+    build: credit-app/
+    ports:
+      - 5000:5000
+volumes:
+  pg-data:
