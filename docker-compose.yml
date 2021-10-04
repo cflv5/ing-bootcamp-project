@@ -59,5 +59,8 @@ services:
     build: credit-app/
     ports:
       - 5000:5000
+    environment:
+      BASE_URL: /
+      NODE_ENV: production
 volumes:
   pg-data:
