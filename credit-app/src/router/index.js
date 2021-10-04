@@ -11,6 +11,11 @@ const routes = [
     path: '/report/:id',
     name: 'Report',
     component: () => import("@/views/Report.vue")
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: () => import("@/components/NotFound.vue")
   }
 ]
 
