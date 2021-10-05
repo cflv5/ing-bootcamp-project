@@ -20,12 +20,13 @@ export default {
 
 <style scoped>
 .result{
-    display: inline-block;
-    position: relative;
+    display: flex;
+    flex-direction: column;
     background: #ACE1AF;
-    height: 10rem;
     text-align: center;
     border-radius: 1rem;
+    justify-self: center;
+    align-items: center;
 }
 
 .danger {
@@ -39,14 +40,22 @@ export default {
 
 .button {
     border: none;
-    position: absolute;
-    bottom: 15px;
-    left: 40%;
     border-radius: 0.45rem;
     background: #0074D9;
     size: 2rem;
-    padding: 15px 32px;
-    color: white;
+    width: 50%;
+    padding: 1rem 2rem;
+    margin: 1rem 0;
+    color: white
+}
 
+@media (min-width: 820px) {
+  .result {
+    width: 75%;
+    margin: auto;
+  }
+  .button {
+    width: 25%;
+  }
 }
 </style>
