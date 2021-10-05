@@ -116,10 +116,12 @@ form {
     display: flex;
     flex-direction: column;
     border-radius: 0.3rem;
+    padding: 1rem;
 }
 
 .form-group {
     padding: 1.2rem;
+    box-sizing: border-box;
     text-align: left;
     margin: auto;
     width: 100%;
@@ -128,17 +130,16 @@ form {
 
 .form-group input {
     display: block;
-    width: 94%;
+    box-sizing: border-box;
+    width: 100%;
     padding: 0.5rem 0.3rem;
-    /* margin: 0.7rem 0.7rem; */
     font-size: 1.1rem;
 }
 
 .form-group label {
     color: #111;
     font-size: 1.2rem;
-    display: inline;
-    margin: 0.7rem 0.7rem;
+    display: inline-block;
 }
 
 .submit {
@@ -152,7 +153,7 @@ form {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1rem;
 }
 .small {
     margin: 0.5rem;
