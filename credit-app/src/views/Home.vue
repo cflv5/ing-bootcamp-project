@@ -68,7 +68,12 @@ export default {
 
 <style scoped>
 .home {
-  padding: 5rem;
+  margin: 2rem 0;
+}
+@media (min-width: 572px) {
+  .home {
+      margin: 4rem;
+  }
 }
 </style>
 >
