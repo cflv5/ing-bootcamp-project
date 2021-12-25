@@ -2,7 +2,7 @@
 ## ING Agile Developer Bootcamp 2021 için geliştirdiğim projedir.
 Bir banka müşterisinin ne kadar kredi alabileceğini sorguladığı mikroservis uygulaması.
 
-[Demo linki](http://130.61.175.164:5000/)
+[Demo linki](http://129.159.207.148:5000/)
 
 ## Sequence Diagram 
 ![Sequence Diagram](sequence_diagram.png)
